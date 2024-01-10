@@ -14,7 +14,7 @@ const Cart = ({cartSize}:CartSizeProps): JSX.Element => {
           {cartSize === 1 ? `${cartSize} item` : `${cartSize} itens`}
         </span>
       </div>
-      <MdShoppingBasket size={36} color="#FFF" />
+      <MdShoppingBasket size={36} color="#141419" />
     </CartStyles>
   );
 };

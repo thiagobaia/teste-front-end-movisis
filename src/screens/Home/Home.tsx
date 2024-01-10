@@ -1,12 +1,17 @@
+import { Product } from "../../components/Product/Product";
+import { Container, Text } from "./styles";
 
-import { Container} from './Home.styled';
-
-const Home = () => {
+export const Home = () => {
   return (
     <Container>
-      <p>Home</p>
+      <Product
+        image={
+          "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg"
+        }
+        title={"Tênis de Caminhada Leve Confortável"}
+        price={"179,90"}
+      />
     </Container>
   );
 };
 
-export default Home;

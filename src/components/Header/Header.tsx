@@ -1,9 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import { Container, List, Nav } from "./styles";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/shoes-icon.png";
 import Cart from "../Cart/Cart";
+import { useCart } from "../../hooks/useCart";
 
 export const Header = () => {
+
+  const { cart } = useCart();
+  const cartSize = cart.length
+
   return (
     <Container>
       <Nav>
@@ -18,7 +23,7 @@ export const Header = () => {
           Produtos
         </List>
       </Nav>
-      <Cart cartSize={2} />
+      <Cart cartSize={cartSize} />
     </Container>
   );
 };

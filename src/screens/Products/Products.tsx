@@ -1,6 +1,6 @@
-import { Container, Text } from "./Products.styled";
+import { Container, Text } from "./styles";
 
-export const Listproduct = () => {
+export const Products = () => {
   return (
     <Container>
       <Text>Products</Text>

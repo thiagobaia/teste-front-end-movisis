@@ -12,7 +12,7 @@ export const CartStyles = styled(Link)`
 
     strong {
       display: flex;
-      color: #fff;
+      color: #141419;
       flex-wrap: nowrap;
       width: 100%;
     }

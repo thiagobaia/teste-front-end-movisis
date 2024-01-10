@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 1080px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid gray;
 
   a {
     transition: opacity 0.2s;
@@ -16,16 +16,18 @@ export const Container = styled.div`
   }
 `;
 
-
 export const Nav = styled.nav`
   display: flex;
   column-gap: 15px;
   align-items: center;
-  
+
+  img {
+    width: 5rem;
+  }
 `;
 
 export const List = styled.p`
-  color: white;
+  color: #141419;
   font-weight: 700;
   transition: all 0.7s;
   cursor: pointer;
