@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-
-`;
-
-export const Text = styled.p`
-  color: red;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 50px;
 `;

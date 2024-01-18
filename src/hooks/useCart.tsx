@@ -40,7 +40,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         (product) => product.id === productId
       );
 
-      const stock = await api.get(`/stock/${productId}`);
+      const stock = await await api.get<Stock>(`/stock/${productId}`);
 
       const stockAmount = stock.data.amount;
 
@@ -56,7 +56,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
       if (productExists) {
         productExists.amount = amount;
       } else {
-        const product = await api.get(`/products/${productId}`);
+        const product = await api.get<Product>(`/products/${productId}`);
 
         const newProduct = {
           ...product.data,
@@ -80,10 +80,9 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     }
   };
 
-  const updateProductAmount = async ({
-    //productId,
-   // amount,
-  }: UpdateProductAmount) => {
+  const updateProductAmount = async ({}: //productId,
+  // amount,
+  UpdateProductAmount) => {
     try {
     } catch {}
   };

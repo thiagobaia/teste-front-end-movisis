@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { ProductItem } from "../../components/ProductItem/ProductItem";
 import { Container } from "./styles";
-import { useCart } from '../../hooks/useCart';
-import { api } from '../../services/api';
-import { formatPrice } from '../../util/format';
-
+import { useCart } from "../../hooks/useCart";
+import { api } from "../../services/api";
+import { formatPrice } from "../../util/format";
 
 interface Product {
   id: number;
@@ -22,26 +21,26 @@ interface CartItemsAmount {
 }
 
 export const Home = () => {
-
   const [products, setProducts] = useState<ProductFormatted[]>([]);
   const { addProduct, cart } = useCart();
 
-
   const cartItemsAmount = cart.reduce((sumAmount, product) => {
-    const newSumAmount = {...sumAmount};
+    const newSumAmount = { ...sumAmount };
     newSumAmount[product.id] = product.amount;
+
     return newSumAmount;
-  }, {} as CartItemsAmount)
+  }, {} as CartItemsAmount);
 
   useEffect(() => {
     async function loadProducts() {
-      const response = await api.get<Product[]>('products');
+      const response = await api.get<Product[]>("/products");
 
-      const data = response.data.map(product => ({
+      const data = response.data.map((product) => ({
         ...product,
-        priceFormatted: formatPrice(product.price)
-      }))
-      setProducts(data)
+        priceFormatted: formatPrice(product.price),
+      }));
+
+      setProducts(data);
     }
 
     loadProducts();
@@ -50,20 +49,18 @@ export const Home = () => {
   function handleAddProduct(id: number) {
     addProduct(id);
   }
-  
   return (
     <Container>
-      {cart.map(product => (
-            <ProductItem
-            image={
-              "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg"
-            }
-            title={"Tênis de Caminhada Leve Confortável"}
-            price={"179,90"}
+        {products.map((product) => (
+          <ProductItem
+            key={product.id}
+            image={product.image}
+            title={product.title}
+            price={product.priceFormatted}
             cartItemsAmoutProductId={cartItemsAmount[product.id] || 0}
-            addProducts={handleAddProduct(product.id)}
+            onClick={() => handleAddProduct(product.id)}
           />
-      ))}
+        ))}
     </Container>
   );
 };

@@ -6,27 +6,24 @@ interface ProductProps {
   title: string;
   price: string;
   cartItemsAmoutProductId: number;
-  addProducts: any;
+  onClick: () => void;
 }
 
-export const ProductItem = (props: ProductProps) => {
-  
+export const ProductItem: React.FC<ProductProps> = (props) => {
   return (
     <ProductItems>
       <li>
-        <img src={props.image} alt="Tênis de Caminhada Leve Confortável" />
+        <img src={props.image} alt={props.title} />
         <strong>{props.title}</strong>
         <span>R$ {props.price}</span>
         <button
           type="button"
           data-testid="add-product-button"
-          onClick={() => props.addProducts}
-          //handleAddProduct(product.id)
+          onClick={props.onClick}
         >
           <div data-testid="cart-product-quantity">
             <MdAddShoppingCart size={16} color="#FFF" />
             {props.cartItemsAmoutProductId}
-            {/* {cartItemsAmount[product.id] || 0} */} 
           </div>
 
           <span>ADICIONAR AO CARRINHO</span>

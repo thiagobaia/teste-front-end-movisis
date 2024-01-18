@@ -6,6 +6,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid gray;
+  padding: 0 80px;
 
   a {
     transition: opacity 0.2s;
